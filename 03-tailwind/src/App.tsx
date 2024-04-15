@@ -140,6 +140,8 @@ function App() {
             </a>
           </ul>
         </section>
+        <h1 className="text-3xl font-bold mb-4 w-max">A picture of myself</h1>
+        <img src="https://pa1.aminoapps.com/6398/09f3f135c1d615bfbc83f3566460f1bdc991ffb6_hq.gif" />
       </main>
       <Footer />
     </div>
