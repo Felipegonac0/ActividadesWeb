@@ -3,22 +3,29 @@ import { useEffect, useState } from "react";
 import Card from "../components/card";
 import NavBar from "../components/navbar";
 
+type character = {
+  id: number;
+  name: string;
+  status: string;
+  species: string;
+  type: string;
+  gender: string;
+  origin: {
+    name: string;
+    url: string;
+  };
+  location: {
+    name: string;
+    url: string;
+  };
+  image: string;
+  episode: [];
+  url: string;
+  created: string;
+};
+
 export default function Favorites() {
-  const [characters, setCharacters] = useState([
-    {
-      id: 0,
-      name: "",
-      status: "",
-      species: "",
-      gender: "",
-      image: "",
-      url: "",
-      location: {
-        name: "",
-        url: "",
-      },
-    },
-  ]);
+  const [characters, setCharacters] = useState<character[]>([]);
   // Function to fetch data from the API
   const fetchData = async () => {
     try {
@@ -31,27 +38,8 @@ export default function Favorites() {
       const data = await response.json();
 
       let favoriteCharacters = data.results;
-      favoriteCharacters = favoriteCharacters.filter(
-        (character: {
-          id: 0;
-          name: "";
-          status: "";
-          species: "";
-          type: "";
-          gender: "";
-          origin: {
-            name: "";
-            url: "";
-          };
-          location: {
-            name: "";
-            url: "";
-          };
-          image: "";
-          episode: [];
-          url: "";
-          created: "";
-        }) => favoritesArray.includes(character.id)
+      favoriteCharacters = favoriteCharacters.filter((character: character) =>
+        favoritesArray.includes(character.id)
       );
       setCharacters(favoriteCharacters);
     } catch (error) {

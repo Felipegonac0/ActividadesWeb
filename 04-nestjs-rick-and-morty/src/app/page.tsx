@@ -4,22 +4,22 @@ import Card from "./components/card";
 import NavBar from "./components/navbar";
 import { useEffect, useState } from "react";
 
+type character = {
+  id: number;
+  name: string;
+  status: string;
+  species: string;
+  gender: string;
+  image: string;
+  url: string;
+  location: {
+    name: string;
+    url: string;
+  };
+};
+
 export default function Home() {
-  const [characters, setCharacters] = useState([
-    {
-      id: 0,
-      name: "Rick Sanchez",
-      status: "Alive",
-      species: "Human",
-      gender: "Male",
-      image: "",
-      url: "",
-      location: {
-        name: "",
-        url: "",
-      },
-    },
-  ]);
+  const [characters, setCharacters] = useState<character[]>([]);
   // Function to fetch data from the API
   const fetchData = async () => {
     try {
