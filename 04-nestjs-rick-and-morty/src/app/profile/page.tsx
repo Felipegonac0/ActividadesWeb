@@ -59,17 +59,13 @@ function CharacterProfilePage() {
     if (characterId) {
       fetchCharacter();
     }
-  }, [characterId]);
-
-  if (!character) {
-    return <p>Loading...</p>;
-  }
+  }, [characterId, fetchCharacter]);
 
   useEffect(() => {
     if (characterId) {
       fetchFirstEpisode();
     }
-  }, [character]);
+  }, [character, fetchFirstEpisode]);
 
   return (
     <>
