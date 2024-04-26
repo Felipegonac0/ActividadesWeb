@@ -14,6 +14,10 @@ export default function Home() {
       gender: "Male",
       image: "",
       url: "",
+      location: {
+        name: "",
+        url: "",
+      },
     },
   ]);
   // Function to fetch data from the API
@@ -32,8 +36,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchData();
-    console.log("DATA: ", characters);
-  }, []); // Empty dependency array to run the effect only once
+  }, []);
 
   return (
     <>
@@ -48,6 +51,7 @@ export default function Home() {
               status={character.status!}
               species={character.species!}
               gender={character.gender!}
+              location={character.location.name}
             />
           ))}
         </div>
