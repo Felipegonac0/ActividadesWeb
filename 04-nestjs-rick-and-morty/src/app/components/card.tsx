@@ -1,14 +1,14 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 interface Props {
-  id: number;
-  imgUrl: string;
-  name: string;
-  status: string;
-  species: string;
-  gender: string;
-  location: string;
+  id: number | any;
+  imgUrl: string | any;
+  name: string | any;
+  status: string | any;
+  species: string | any;
+  gender: string | any;
+  location: string | any;
 }
 
 const Card: React.FC<Props> = ({
