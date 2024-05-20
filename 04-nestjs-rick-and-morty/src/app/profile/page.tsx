@@ -2,7 +2,6 @@
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import NavBar from '../components/navbar'
-import Image from 'next/image'
 
 function CharacterProfilePage() {
   const idParams = useSearchParams()
@@ -76,11 +75,11 @@ function CharacterProfilePage() {
           <div className='flex flex-wrap justify-center'>
             <div className='flex w-full justify-center'>
               <div className='relative'>
-                <Image
+                <img
                   src={character.image}
                   className='absolute -m-16 -ml-20 max-w-[150px] rounded-full border-none align-middle shadow-xl lg:-ml-16'
                   alt={''}
-                ></Image>
+                />
               </div>
             </div>
             <div className='mt-20 w-full text-center'>

@@ -1,14 +1,13 @@
-import Image from 'next/image'
 export default function NavBar() {
   return (
     <nav className='border-gray-200 bg-white dark:bg-gray-900'>
       <div className='mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4'>
         <a href='/' className='flex items-center space-x-3 rtl:space-x-reverse'>
-          <Image
+          <img
             src='https://thumbs.dreamstime.com/b/portal-space-to-other-universes-portal-space-to-other-universes-isolated-black-background-vector-252551834.jpg'
-            className='h-8'
+            className='h-8 w-8'
             alt='Flowbite Logo'
-          ></Image>
+          />
           <span className='self-center whitespace-nowrap text-2xl font-semibold dark:text-white'>
             Rick and Morty
           </span>

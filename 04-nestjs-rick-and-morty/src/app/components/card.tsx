@@ -1,6 +1,5 @@
 'use client'
 import Link from 'next/link'
-import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 interface Props {
@@ -55,7 +54,7 @@ const Card: React.FC<Props> = ({
   return (
     <div className=' max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800'>
       <Link href='#'>
-        <Image className='w-full rounded-t-lg' src={imgUrl} alt=''></Image>
+        <img className='w-full rounded-t-lg' src={imgUrl} alt='' />
       </Link>
       <div className='p-5'>
         <a href={`/profile?id=${id}`}>
@@ -79,7 +78,7 @@ const Card: React.FC<Props> = ({
           <button onClick={toggleFavorite}>
             <svg
               xmlns='http://www.w3.org/2000/svg'
-              fill={`${favorite ? 'white' : 'none'}`}
+              fill={`${favorite ? 'blue' : 'none'}`}
               viewBox='0 0 24 24'
               strokeWidth={1.5}
               stroke='currentColor'
