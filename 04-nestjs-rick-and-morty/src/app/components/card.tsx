@@ -1,98 +1,43 @@
 'use client'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { Character } from '../types/Character'
+import Star from './Star'
 
-interface Props {
-  id: number
-  imgUrl: string
-  name: string
-  status: string
-  species: string
-  gender: string
-  location: string
+export interface Props {
+  character: Character
 }
 
-const Card: React.FC<Props> = ({
-  id,
-  imgUrl,
-  name,
-  status,
-  species,
-  gender,
-  location,
-}) => {
-  const [favorite, setFavorite] = useState<boolean>(false)
-
-  useEffect(() => {
-    // Load favorite characters from local storage
-    const favoritesFromStorage = localStorage.getItem('favorites')
-    if (favoritesFromStorage) {
-      const favoritesArray = JSON.parse(favoritesFromStorage)
-      setFavorite(favoritesArray.includes(id))
-    }
-  }, [id])
-
-  const toggleFavorite = () => {
-    setFavorite(!favorite)
-    // Update favorite characters array
-    let favoritesArray: number[] = []
-    const favoritesFromStorage = localStorage.getItem('favorites')
-    if (favoritesFromStorage) {
-      favoritesArray = JSON.parse(favoritesFromStorage)
-    }
-    if (favorite) {
-      // Remove character from favorites
-      favoritesArray = favoritesArray.filter((favId: number) => favId !== id)
-    } else {
-      // Add character to favorites
-      favoritesArray.push(id)
-    }
-    // Save updated favorites array to local storage
-    localStorage.setItem('favorites', JSON.stringify(favoritesArray))
-  }
-
+export function Card({ character }: Props) {
   return (
-    <div className=' max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800'>
+    <div
+      className=' max-w-sm rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800'
+      data-testid='Card'
+    >
       <Link href='#'>
-        <img className='w-full rounded-t-lg' src={imgUrl} alt='' />
+        <img className='w-full rounded-t-lg' src={character.image} alt='' />
       </Link>
       <div className='p-5'>
-        <a href={`/profile?id=${id}`}>
+        <a href={`/profile?id=${character.id}`}>
           <h5 className='mb-2 text-wrap text-2xl font-bold tracking-tight text-gray-900 dark:text-white'>
-            {name}
+            {character.name}
           </h5>
         </a>
         <p className='mb-3 font-normal text-gray-700 dark:text-gray-400'>
-          <strong>Status: </strong> {status}
+          <strong>Status: </strong> {character.status}
         </p>
         <p className='mb-3 font-normal text-gray-700 dark:text-gray-400'>
-          <strong>Location: </strong> {location}
+          <strong>Location: </strong> {character.location.name}
         </p>
         <p className='mb-3 font-normal text-gray-700 dark:text-gray-400'>
-          <strong>Species: </strong> {species}
+          <strong>Species: </strong> {character.species}
         </p>
         <p className='mb-3 font-normal text-gray-700 dark:text-gray-400'>
-          <strong>Gender: </strong> {gender}
+          <strong>Gender: </strong> {character.gender}
         </p>
         <div className='flex flex-row items-center justify-between'>
-          <button onClick={toggleFavorite}>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              fill={`${favorite ? 'blue' : 'none'}`}
-              viewBox='0 0 24 24'
-              strokeWidth={1.5}
-              stroke='currentColor'
-              className='h-max w-8'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                d='M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z'
-              />
-            </svg>
-          </button>
+          <Star id={character.id} />
           <a
-            href={`/profile?id=${id}`}
+            href={`/profile?id=${character.id}`}
             className='inline-flex items-center rounded-lg bg-blue-700 px-3 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
           >
             Read more
