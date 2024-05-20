@@ -1,6 +1,9 @@
 export default function NavBar() {
   return (
-    <nav className='border-gray-200 bg-white dark:bg-gray-900'>
+    <nav
+      className='border-gray-200 bg-white dark:bg-gray-900'
+      data-testid='navbar'
+    >
       <div className='mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4'>
         <a href='/' className='flex items-center space-x-3 rtl:space-x-reverse'>
           <img
