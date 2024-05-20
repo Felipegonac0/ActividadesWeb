@@ -1,4 +1,1 @@
-# use this if your project inside a folder of your repo
-
 cd 04-nestjs-rick-and-morty && npx lint-staged
-exit 1
