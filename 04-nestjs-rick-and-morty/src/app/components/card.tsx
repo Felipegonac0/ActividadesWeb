@@ -2,13 +2,13 @@
 import { useEffect, useState } from "react";
 
 interface Props {
-  id: number | any;
-  imgUrl: string | any;
-  name: string | any;
-  status: string | any;
-  species: string | any;
-  gender: string | any;
-  location: string | any;
+  id: number;
+  imgUrl: string;
+  name: string;
+  status: string;
+  species: string;
+  gender: string;
+  location: string;
 }
 
 const Card: React.FC<Props> = ({
