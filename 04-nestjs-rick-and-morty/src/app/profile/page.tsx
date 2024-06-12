@@ -1,24 +1,15 @@
 'use client'
-import { useSearchParams } from 'next/navigation'
-import CharacterProfile from '../components/CharacterProfile'
+import { Suspense } from 'react'
 import NavBar from '../components/navbar'
+import CharacterProfileContent from '../components/CharacterProfileContent'
 
 function CharacterProfilePage() {
-  const idParams = useSearchParams()
-  const characterId = idParams.get('id')
-  if (!characterId) {
-    return (
-      <>
-        <NavBar></NavBar>
-        <h1>NOT USER FOUND</h1>
-      </>
-    )
-  }
-
   return (
     <>
-      <NavBar></NavBar>
-      <CharacterProfile id={characterId}></CharacterProfile>
+      <NavBar />
+      <Suspense fallback={<div>Loading...</div>}>
+        <CharacterProfileContent />
+      </Suspense>
     </>
   )
 }
